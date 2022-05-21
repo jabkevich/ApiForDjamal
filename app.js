@@ -42,6 +42,14 @@ app.post("/api/tasks", jsonParser, function (req, res) {
 
     const taskName = req.body.name;
     const taskDescription = req.body.description;
+
+    if(!taskName){
+        res.status(400).send("Имя не может быть пустым")
+    }
+    if(taskDescription === undefined || taskDescription === null){
+        res.status(400).send("Описание не может быть пустым")
+    }
+
     let task = {name: taskName, description: taskDescription};
 
     let data = fs.readFileSync(filePath, "utf8");
