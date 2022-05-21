@@ -89,7 +89,7 @@ app.delete("/api/tasks/:id", function(req, res){
         res.send(task);
     }
     else{
-        res.status(404).send();
+        res.status(404).send("задачи с таким id не существует");
     }
 });
 // изменение пользователя
